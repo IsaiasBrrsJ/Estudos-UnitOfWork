@@ -6,6 +6,7 @@ using RabbitPublish.Unit;
 using RabbitPublish.Repositories;
 using RabbitPublish.Repositories.Persistence;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace RabbitPublish
 {
