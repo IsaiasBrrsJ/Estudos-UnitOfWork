@@ -14,19 +14,16 @@ namespace RabbitPublish.Repositories.Persistence
         {
             _userDbContext.Enderecos.Add(endereco);
         }
-
         public void Delete(Guid id)
         {
             var endereco = _userDbContext.Enderecos.Find(id);
-        
-           _userDbContext.Enderecos.Remove(endereco!);
-        }
 
+            _userDbContext.Enderecos.Remove(endereco!);
+        }
         public Endereco Get(Guid id)
         {
-            return _userDbContext.Enderecos.Find(id)!;   
+            return _userDbContext.Enderecos.Find(id)!;
         }
-
         public IEnumerable<Endereco> GetAll()
         {
             return _userDbContext.Enderecos.ToList();

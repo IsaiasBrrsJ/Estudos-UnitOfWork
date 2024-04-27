@@ -8,5 +8,6 @@ namespace RabbitPublish.Repositories
         Task<Usuario> Get(Guid id);
         Task Delete(Guid id);
         Task<IEnumerable<Usuario>> GetAll();
+        Task<int> SaveChangeAsync();
     }
 }

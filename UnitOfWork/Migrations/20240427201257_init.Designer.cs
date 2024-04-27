@@ -12,8 +12,8 @@ using RabbitPublish.Repositories;
 namespace RabbitPublish.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20240427162316_AddEnderecoUser")]
-    partial class AddEnderecoUser
+    [Migration("20240427201257_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,28 +24,6 @@ namespace RabbitPublish.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("RabbitPublish.Model.Endereco", b =>
-                {
-                    b.Property<string>("Bairro")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Numero")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Rua")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UsuarioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("Enderecos");
-                });
 
             modelBuilder.Entity("RabbitPublish.Model.Usuario", b =>
                 {
@@ -66,17 +44,6 @@ namespace RabbitPublish.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuario");
-                });
-
-            modelBuilder.Entity("RabbitPublish.Model.Endereco", b =>
-                {
-                    b.HasOne("RabbitPublish.Model.Usuario", "usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("usuario");
                 });
 #pragma warning restore 612, 618
         }
