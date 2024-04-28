@@ -14,18 +14,20 @@ namespace RabbitPublish.Unit
             _dbContext = dbContext;
         }
         public async override Task BegginTransaction()
-        {
-            _transaction = await _dbContext.Database.BeginTransactionAsync();
-        }
+        =>  _transaction = await _dbContext.Database.BeginTransactionAsync();
+        
         public async override Task CommitTransaction()
         {
             try
             {
-                await _transaction.CommitAsync();
+                //throw new InvalidOperationException();
+                 await _transaction.CommitAsync();
+              
             }
-            catch
+            catch(Exception ex)
             {
                 await _transaction.RollbackAsync();
+              
             }
         }
         public async override Task<int> CompleteTask()

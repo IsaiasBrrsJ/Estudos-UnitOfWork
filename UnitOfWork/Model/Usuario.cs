@@ -6,7 +6,8 @@
         {
             Name = name;
             QuantidadeUser = quantidadeUser;
-            
+
+            GerarSenha();
             validarQuantidade();
         }
         public Guid Id {get;set;}
@@ -19,7 +20,7 @@
             if (QuantidadeUser > 4)
                 throw new InvalidOperationException("erro");
         }
-        private void GeneratePassword()
+        private void GerarSenha()
         {
             var alfabetoMinusculo = new char[26];
             var alfabetoMaiusculo = new char[26];
